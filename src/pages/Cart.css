@@ -1,0 +1,59 @@
+/* Styling for the cart page container */
+/* Centers the cart content and limits the width */
+.cart-page {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Styling for the cart item list */
+/* Removes default list styling and padding */
+.cart-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Styling for individual cart items */
+/* Aligns items horizontally and adds spacing between elements */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #eee; /* Adds a light border between items */
+    padding: 10px 0; /* Adds vertical spacing */
+}
+
+/* Styling for product images in the cart */
+/* Ensures consistent size and aspect ratio */
+.cart-item img {
+    width: 60px;
+    height: auto;
+    object-fit: contain; /* Ensures the image fits within the container */
+}
+
+/* Styling for input fields in the cart (e.g., quantity inputs) */
+/* Sets a fixed width and adds spacing around the input */
+.cart-details input {
+    width: 50px;
+    padding: 4px;
+    margin: 5px 10px 5px 0;
+}
+
+/* Styling for the cart summary section */
+/* Adds spacing and increases font size for better readability */
+.cart-summary {
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+/* Styling for the checkout button */
+/* Adds a green background, white text, and rounded corners */
+.checkout-btn {
+    background-color: #28a745; /* Green color for the button */
+    color: white;
+    padding: 10px 16px; /* Adds padding for a larger clickable area */
+    border: none;
+    border-radius: 5px; /* Rounds the corners */
+    margin-top: 10px;
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+}

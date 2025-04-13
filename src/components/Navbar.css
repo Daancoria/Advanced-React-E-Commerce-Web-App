@@ -1,0 +1,64 @@
+/* Navbar container styling */
+.navbar {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out items evenly */
+    align-items: center; /* Vertically center items */
+    background-color: #007bff; /* Set the background color to blue */
+    color: white; /* Set text color to white */
+    padding: 12px 24px; /* Add padding for spacing */
+}
+
+/* Logo styling */
+.nav-logo {
+    font-size: 1.5rem; /* Set font size for the logo */
+    text-decoration: none; /* Remove underline from the logo */
+    color: white; /* Set logo text color to white */
+}
+
+/* Navigation links container */
+.nav-links {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center links */
+    gap: 20px; /* Add spacing between links */
+}
+
+/* Cart icon styling */
+.nav-cart {
+    position: relative; /* Position relative for the cart count badge */
+    font-size: 1.2rem; /* Set font size for the cart icon */
+    text-decoration: none; /* Remove underline from the cart link */
+    color: white; /* Set cart icon color to white */
+}
+
+/* Cart item count badge */
+.cart-count {
+    position: absolute; /* Position the badge relative to the cart icon */
+    top: -8px; /* Position the badge above the cart icon */
+    right: -12px; /* Position the badge to the right of the cart icon */
+    background-color: red; /* Set badge background color to red */
+    color: white; /* Set badge text color to white */
+    font-size: 0.75rem; /* Set font size for the badge */
+    padding: 2px 6px; /* Add padding for spacing */
+    border-radius: 999px; /* Make the badge circular */
+}
+
+/* Individual navigation link styling */
+.nav-link {
+    margin-right: 20px; /* Add spacing to the right of each link */
+    font-size: 1rem; /* Set font size for links */
+    text-decoration: none; /* Remove underline from links */
+    color: white; /* Set link text color to white */
+    transition: color 0.2s ease; /* Add smooth transition for hover effect */
+}
+
+/* Hover effect for navigation links */
+.nav-link:hover {
+    color: #ddd; /* Change link color to light gray on hover */
+}
+
+/* User section styling */
+.nav-user {
+    margin-right: 15px; /* Add spacing to the right of the user section */
+    font-weight: 500; /* Set font weight for user text */
+    color: white; /* Set user text color to white */
+}
