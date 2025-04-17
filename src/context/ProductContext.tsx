@@ -20,7 +20,7 @@ const initialState: ProductState = {
 
 const productReducer = (
     state: ProductState,
-    action: ProductAction // <-- make sure this is explicitly typed here
+    action: ProductAction 
   ): ProductState => {
     switch (action.type) {
       case 'SET_PRODUCTS':
