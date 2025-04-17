@@ -18,19 +18,21 @@ const initialState: ProductState = {
   selectedCategory: '',
 };
 
-const productReducer = (state: ProductState, action: ProductAction): ProductState => {
-  switch (action.type) {
-    case 'SET_PRODUCTS':
-      return { ...state, products: action.payload };
-    case 'SET_SELECTED_CATEGORY':
-      return { ...state, selectedCategory: action.payload };
-    default: {
-      const _exhaustiveCheck: never = action;
-      throw new Error(`Unhandled action type: ${JSON.stringify(_exhaustiveCheck)}`);
+const productReducer = (
+    state: ProductState,
+    action: ProductAction // <-- make sure this is explicitly typed here
+  ): ProductState => {
+    switch (action.type) {
+      case 'SET_PRODUCTS':
+        return { ...state, products: action.payload };
+      case 'SET_SELECTED_CATEGORY':
+        return { ...state, selectedCategory: action.payload };
+      default: {
+        const _exhaustiveCheck: never = action;
+        throw new Error(`Unhandled action type: ${JSON.stringify(_exhaustiveCheck)}`);
+      }
     }
-  }
 };
-
 interface ProductProviderProps {
   children: ReactNode;
 }
