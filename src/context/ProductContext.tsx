@@ -64,7 +64,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
 export const useProductContext = () : ProductContextType => {
     //useContext is a hook that allows us to access the context value
     const context = useContext(ProductContext);
-    if (!context) {
+    if (context == undefined) {
         throw new Error("useProductContext must be used within a ProductProvider");
     }
     return context;
