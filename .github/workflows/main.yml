@@ -1,9 +1,9 @@
-name: CI/CD
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
-      - main
+      - main  
 
 jobs:
   build-and-test:
@@ -12,13 +12,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Type check
         run: npx tsc --noEmit
@@ -43,5 +38,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
           vercel-args: '--prod'
+          working-directory: ./
