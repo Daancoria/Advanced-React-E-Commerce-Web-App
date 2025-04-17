@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product } from '../types/types';
-import { CartItem } from '../types/types'; // ✅ New type
+import { Product, CartItem } from '../types/types';
 
 // Load cart from sessionStorage or start empty
 const savedCart = sessionStorage.getItem('cart');
@@ -19,6 +18,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    // Add to cart: create quantity or increment it
     addToCart: (state, action: PayloadAction<Product>) => {
       const existing = state.items.find(item => item.id === action.payload.id);
       if (existing) {
@@ -29,12 +29,14 @@ const cartSlice = createSlice({
       saveToSession(state.items);
     },
 
-    removeFromCart: (state, action: PayloadAction<number>) => {
+    // Remove item by string ID
+    removeFromCart: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter(item => item.id !== action.payload);
       saveToSession(state.items);
     },
 
-    updateQuantity: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
+    // Update quantity of a specific item
+    updateQuantity: (state, action: PayloadAction<{ id: string; quantity: number }>) => {
       const { id, quantity } = action.payload;
       const item = state.items.find(item => item.id === id);
       if (item) {
@@ -43,6 +45,7 @@ const cartSlice = createSlice({
       saveToSession(state.items);
     },
 
+    // Clear all items
     clearCart: (state) => {
       state.items = [];
       sessionStorage.removeItem('cart');

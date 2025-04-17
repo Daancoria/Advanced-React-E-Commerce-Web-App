@@ -1,6 +1,7 @@
 // Represents the structure of a product object in the application
+import { Timestamp } from "firebase/firestore";
 export interface Product {
-    id: number; // Use number here to match CartItem and consistency across app
+    id: string; // 
     title: string;
     price: number;
     description: string;
@@ -19,3 +20,18 @@ export interface Product {
 export interface CartItem extends Product {
     quantity: number;
 }
+
+export interface OrderItem {
+    id: string;
+    title: string;
+    price: number;
+    quantity: number;
+}
+  
+export interface Order {
+    id: string;
+    createdAt: Timestamp;
+    total: number;
+    items: OrderItem[];
+}
+  

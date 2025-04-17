@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 
 const mockProduct = {
-  id: 1,
+  id: '1',
   title: 'Test Product',
   price: 19.99,
   description: 'A test product description',

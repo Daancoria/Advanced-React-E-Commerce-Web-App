@@ -1,71 +1,70 @@
 import { createContext, useContext, ReactNode, useReducer } from "react";
 import { Product } from "../types/types";
 
-
-//Actions are instructions to change states
+// Define allowed actions for the product context
 type ProductAction = 
-    {type: 'SET_PRODUCTS', payload: Product[]} | 
-    {type: 'SET_SELECTED_CATEGORY', payload: string }; 
+  { type: 'SET_PRODUCTS'; payload: Product[] } |
+  { type: 'SET_SELECTED_CATEGORY'; payload: string };
 
-    //Define shape of state
+// Define the shape of the state
 interface ProductState {
-    products: Product[];
-    selectedCategory: string;
+  products: Product[];
+  selectedCategory: string;
 }
 
+// Initial state
 const initialState: ProductState = {
-    products: [],
-    selectedCategory: '',
+  products: [],
+  selectedCategory: '',
 };
 
-//Reducer Function listens for action and changes the state based on the action type
+// Reducer function
 const productReducer = (
-    state: ProductState, 
-    action: ProductAction
+  state: ProductState,
+  action: ProductAction
 ): ProductState => {
-    switch (action.type) {
-        case 'SET_PRODUCTS':
-            return { ...state, products: action.payload };
-        case 'SET_SELECTED_CATEGORY':
-            return { ...state, selectedCategory: action.payload };
-        default:
-            throw new Error(`Unhandled action type: ${action.type}`);
+  switch (action.type) {
+    case 'SET_PRODUCTS':
+      return { ...state, products: action.payload };
+    case 'SET_SELECTED_CATEGORY':
+      return { ...state, selectedCategory: action.payload };
+    default: {
+      // Exhaustiveness check for future action types
+      const _exhaustiveCheck: never = action;
+      throw new Error(`Unhandled action type: ${JSON.stringify(_exhaustiveCheck)}`);
     }
+  }
 };
 
-//Create Context
-interface ProductContextType extends ProductState {    
-    //dispatch is a function that allows us to trigger the action such as
-    //SET_PRODUCTS or SET_SELECTED_CATEGORY to update the state
-    dispatch: React.Dispatch<ProductAction>; 
+// Define the context shape
+interface ProductContextType extends ProductState {
+  dispatch: React.Dispatch<ProductAction>;
 }
 
-const ProductContext = createContext<ProductContextType | undefined>
-(undefined);
+// Create the context
+const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
+// Provider props type
 interface ProductProviderProps {
-    children: ReactNode;
+  children: ReactNode;
 }
-//Provider component to wrap around the app and provide state to all components
+// Context Provider component
+export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) => {
+  const [state, dispatch] = useReducer(productReducer, initialState);
+  const value: ProductContextType = { ...state, dispatch };
 
-export const ProductProvider: React.FC<ProductProviderProps> = ({ 
-    children, 
-}) => {
-    const [state, dispatch] = useReducer(productReducer, initialState);
-
-    return (
-        <ProductContext.Provider value={{ ...state, dispatch }}>
-            {children}
-        </ProductContext.Provider>
-    );
+  return (
+    <ProductContext.Provider value={value}>
+      {children}
+    </ProductContext.Provider>
+  );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const useProductContext = () : ProductContextType => {
-    //useContext is a hook that allows us to access the context value
-    const context = useContext(ProductContext);
-    if (context == undefined) {
-        throw new Error("useProductContext must be used within a ProductProvider");
-    }
-    return context;
+// Custom hook to access product context
+export const useProductContext = (): ProductContextType => {
+  const context = useContext(ProductContext);
+  if (!context) {
+    throw new Error("useProductContext must be used within a ProductProvider");
+  }
+  return context;
 };

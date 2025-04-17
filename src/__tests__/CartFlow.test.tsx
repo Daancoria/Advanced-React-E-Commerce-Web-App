@@ -7,14 +7,14 @@ import { store } from '../redux/store';
 import { BrowserRouter } from 'react-router-dom';
 
 const mockProduct = {
-  id: 1,
-  title: 'Flow Test Product',
-  price: 25.0,
-  description: 'Test description',
-  category: 'test',
-  rating: { rate: 4, count: 10 },
-  image: 'https://via.placeholder.com/150'
-};
+    id: '1', 
+    title: 'Flow Test Product',
+    price: 25.0,
+    description: 'Test description',
+    category: 'test',
+    image: 'https://via.placeholder.com/150',
+    rating: { rate: 4.5, count: 10 },
+}; 
 
 describe('Cart Integration', () => {
   it('updates NavBar cart count when adding product', () => {

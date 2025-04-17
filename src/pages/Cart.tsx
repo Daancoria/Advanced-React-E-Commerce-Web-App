@@ -14,11 +14,11 @@ const Cart: React.FC = () => {
         .reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0)
         .toFixed(2);
 
-    const handleRemove = (id: number) => {
+    const handleRemove = (id: string) => {
         dispatch(removeFromCart(id));
     };
 
-    const handleQuantityChange = (id: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleQuantityChange = (id: string, e: React.ChangeEvent<HTMLInputElement>) => {
         const value = Number(e.target.value);
         if (value >= 1) {
             dispatch(updateQuantity({ id, quantity: value }));
