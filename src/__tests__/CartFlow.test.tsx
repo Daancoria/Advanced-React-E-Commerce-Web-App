@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import ProductCard from '../components/ProductCard';
 import NavBar from '../components/NavBar';

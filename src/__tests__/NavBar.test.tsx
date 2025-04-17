@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom';
-import React from 'react';
 import { render } from '@testing-library/react';
 import NavBar from '../components/NavBar';
 import { Provider } from 'react-redux';
