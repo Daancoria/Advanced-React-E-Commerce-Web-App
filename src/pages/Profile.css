@@ -1,0 +1,113 @@
+/* Profile Page Container */
+/* Centers the profile page content and adds styling for a card-like appearance */
+.profile-page {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9fafb;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+/* Profile Card */
+/* Aligns the profile content vertically and centers it */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Profile Avatar */
+/* Styles the user's avatar with a circular shape and consistent size */
+.profile-avatar {
+    border-radius: 50%;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+/* Profile Information */
+/* Styles the text and input fields for displaying and editing user information */
+.profile-info p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    margin: 8px 0;
+}
+
+/* Input Fields */
+/* Adds padding, borders, and transitions for input fields */
+.profile-info input {
+    padding: 6px 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60%;
+    max-width: 250px;
+    transition: border-color 0.2s ease;
+}
+
+/* Focused Input Fields */
+/* Highlights the input field when focused */
+.profile-info input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Editing Mode Input Fields */
+/* Changes the background color of input fields when in editing mode */
+.profile-info.editing input {
+    background-color: #fffbe6;
+}
+
+/* Profile Button */
+/* Styles buttons with a blue background, white text, and rounded corners */
+.profile-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    margin: 10px 10px 0 10px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+/* Hover Effect for Profile Button */
+/* Changes the background color on hover for better interactivity */
+.profile-button:hover {
+    background-color: #0056b3;
+}
+
+/* Disabled Profile Button */
+/* Styles the button when it is disabled */
+.profile-button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+/* Store Link */
+/* Styles the link to navigate back to the store with a gray background and rounded corners */
+.store-link {
+    display: inline-block;
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 10px;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover Effect for Store Link */
+/* Changes the background color on hover for better interactivity */
+.store-link:hover {
+    background-color: #5a6268;
+}
