@@ -128,6 +128,55 @@ src/
 
 ---
 
+
+---
+
+## ✅ CI/CD & Testing Overview
+
+### ✅ Test-Driven Development (TDD)
+
+- Unit Tests:
+  - `ProductCard.test.tsx`: Validates rendering and cart button behavior.
+  - `NavBar.test.tsx`: Validates login/logout UI based on Redux state.
+- Integration Test:
+  - `CartFlow.test.tsx`: Ensures cart count updates correctly in NavBar when product is added.
+
+### 🧪 Tech Stack for Testing
+- React Testing Library
+- Jest with `ts-jest`
+- Firebase mocking via Redux state
+
+---
+
+### ✅ Continuous Integration (CI)
+
+- GitHub Actions Workflow (`.github/workflows/main.yml`)
+- Runs:
+  - TypeScript type checks
+  - Jest unit and integration tests
+  - Production build
+
+- CI blocks deployment on any failed test
+
+---
+
+### ✅ Continuous Deployment (CD)
+
+- Vercel deployed via GitHub Actions (`amondnet/vercel-action`)
+- Only deploys after successful CI
+- Uses `vercel-args: --prod` to trigger production deployment
+
+---
+
+### ✅ Coverage
+
+You can view coverage locally:
+
+```bash
+npm run test -- --coverage
+```
+
+
 ## 📄 License
 
 This project is licensed under the MIT License.
