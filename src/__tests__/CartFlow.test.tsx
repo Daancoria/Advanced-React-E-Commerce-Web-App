@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import ProductCard from '../components/ProductCard';
 import NavBar from '../components/NavBar';
 import { Provider } from 'react-redux';
@@ -15,15 +15,15 @@ const mockProduct: Product = {
   description: 'Test description',
   category: 'Test category',
   rating: { rate: 4.5, count: 99 },
-  image: 'https://via.placeholder.com/150'
+  image: 'https://via.placeholder.com/150',
 };
 
 describe('Cart Integration', () => {
-  it('updates NavBar cart count when adding product', () => {
-    // Simulate user login
+  it('updates NavBar cart count when adding product', async () => {
+    // Simulate a logged-in user
     store.dispatch(login({ name: 'TestUser', email: 'test@example.com' }));
 
-    const { getByText } = render(
+    render(
       <Provider store={store}>
         <BrowserRouter>
           <NavBar />
@@ -32,13 +32,14 @@ describe('Cart Integration', () => {
       </Provider>
     );
 
-    // Check initial cart count
-    expect(getByText(/🛒/).nextSibling?.textContent).toBe('0');
+    const cartCount = screen.getByTestId('cart-count');
+    expect(cartCount.textContent).toBe('0');
 
-    const addButton = getByText(/Add to Cart/i);
+    const addButton = screen.getByText(/Add to Cart/i);
     fireEvent.click(addButton);
 
-    // Cart count should increase to 1
-    expect(getByText(/🛒/).nextSibling?.textContent).toBe('1');
+    await waitFor(() => {
+      expect(cartCount.textContent).toBe('1');
+    });
   });
 });

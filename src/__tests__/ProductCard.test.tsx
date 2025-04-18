@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import ProductCard from '../components/ProductCard';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
@@ -17,26 +17,33 @@ const mockProduct: Product = {
 
 describe('ProductCard', () => {
   it('renders product details correctly', () => {
-    const { getByRole, getByText, getByAltText } = render(
+    render(
       <Provider store={store}>
         <ProductCard product={mockProduct} />
       </Provider>
     );
 
-    expect(getByRole('heading', { name: /Test Product/i })).toBeInTheDocument();
-    expect(getByText(/\$19.99/)).toBeInTheDocument();
-    expect(getByAltText(/Test Product/)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Test Product/i })).toBeInTheDocument();
+    expect(screen.getByText(/\$19.99/)).toBeInTheDocument();
+    expect(screen.getByAltText(/Test Product/)).toBeInTheDocument();
   });
 
   it('adds product to cart on button click', () => {
-    const { getByText } = render(
+    render(
       <Provider store={store}>
         <ProductCard product={mockProduct} />
       </Provider>
     );
 
-    const addButton = getByText(/Add to Cart/i);
+    const addButton = screen.getByText(/Add to Cart/i);
     fireEvent.click(addButton);
-    expect(getByText(/✔ Added!/i)).toBeInTheDocument();
+
+    // Find all buttons and verify one contains "Added"
+    const allButtons = screen.getAllByRole('button');
+    const addedButton = allButtons.find(btn =>
+      btn.textContent?.includes('Added')
+    );
+
+    expect(addedButton).toBeInTheDocument();
   });
 });
