@@ -176,6 +176,10 @@ You can view coverage locally:
 npm run test -- --coverage
 ```
 
+### Live site 
+
+https://reactecommerce-navy.vercel.app/
+
 
 ## 📄 License
 
