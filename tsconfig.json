@@ -15,7 +15,8 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "types": ["jest", "node"],
-    "noEmit": true  //  line to avoid unwanted .js files
+    "noEmit": true, //  line to avoid unwanted .js files
+    "allowImportingTsExtensions": true,
   },
   "include": ["src"]
 }

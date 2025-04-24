@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import { ProductProvider } from "./context/ProductContext";
+import { ProductProvider } from "./context/ProductContext.tsx";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import Cart from "./pages/Cart";
 import Auth from "./pages/Auth";
