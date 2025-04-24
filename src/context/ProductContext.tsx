@@ -1,4 +1,5 @@
 // src/context/ProductContext.tsx
+import React from 'react';
 import { ReactNode, useReducer } from 'react';
 import { Product } from '../types/types';
 import { ProductContext } from './ProductContext';
@@ -47,5 +48,5 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
     </ProductContext.Provider>
   );
 };
-export { ProductContext };
+export default { ProductContext };
 
